@@ -1,0 +1,53 @@
+local player = game.Players.LocalPlayer
+
+-- Create ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.CoreGui  -- Bypasses most game GUIs (works in executors)
+screenGui.Name = "CoordsGUI"
+
+-- Create Frame (background)
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 200, 0, 60)
+frame.Position = UDim2.new(0, 10, 0, 10)  -- Top-left corner
+frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+frame.BackgroundTransparency = 0.4
+frame.BorderSizePixel = 0
+frame.Parent = screenGui
+
+-- Corner radius
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 8)
+corner.Parent = frame
+
+-- TextLabel for coordinates
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.Position = UDim2.new(0, 0, 0, 0)
+textLabel.BackgroundTransparency = 1
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.TextStrokeTransparency = 0.7
+textLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+textLabel.Font = Enum.Font.Code
+textLabel.TextSize = 18
+textLabel.Text = "Position: Waiting for character..."
+textLabel.Parent = frame
+
+-- Update function
+local function updateCoords()
+    if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        local pos = player.Character.HumanoidRootPart.Position
+        textLabel.Text = string.format("Position:\nX: %.2f\nY: %.2f\nZ: %.2f", pos.X, pos.Y, pos.Z)
+    elseif player.Character and player.Character:FindFirstChild("Head") then
+        -- Fallback if no HumanoidRootPart (rare cases)
+        local pos = player.Character.Head.Position
+        textLabel.Text = string.format("Position (Head):\nX: %.2f\nY: %.2f\nZ: %.2f", pos.X, pos.Y, pos.Z)
+    else
+        textLabel.Text = "Position: No character"
+    end
+end
+
+-- Run update every frame
+game:GetService("RunService").RenderStepped:Connect(updateCoords)
+
+-- Initial update
+updateCoords()
