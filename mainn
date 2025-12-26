@@ -1,0 +1,129 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+-- ScreenGui
+local gui = Instance.new("ScreenGui")
+gui.Parent = player:WaitForChild("PlayerGui")
+gui.ResetOnSpawn = false
+
+
+-- Main Frame
+local frame = Instance.new("Frame")
+frame.Parent = gui
+frame.Size = UDim2.fromScale(0.25, 0.4)
+frame.Position = UDim2.fromScale(0.35, 0.35)
+frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+frame.Active = true        -- REQUIRED for dragging
+frame.Draggable = true    -- Makes it draggable
+
+--67
+local Name = Instance.new("TextLabel")
+Name.Parent = frame
+Name.Size = UDim2.fromScale(1, 0.08)
+Name.Position = UDim2.fromScale(0, 0)
+Name.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
+Name.Text = "private script-- minority of scripts are not mine-- reset to reset scripts"
+
+
+-- ESPButton
+local ESPbutton = Instance.new("TextButton")
+ESPbutton.Parent = frame
+ESPbutton.Size = UDim2.fromScale(0.2, 0.1)
+ESPbutton.Position = UDim2.fromScale(0.1, 0.1)
+ESPbutton.Text = "ESP-- R to toggle"
+ESPbutton.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
+ESPbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+-- ESPbutton click
+ESPbutton.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DND222dnD222/e/refs/heads/main/pesp"))()
+end)
+
+-- Speedbutton
+local Speedbutton = Instance.new("TextButton")
+Speedbutton.Parent = frame
+Speedbutton.Size = UDim2.fromScale(0.2, 0.1)
+Speedbutton.Position = UDim2.fromScale(0.35, 0.1)
+Speedbutton.Text = "SPEED-- hold shift"
+Speedbutton.BackgroundColor3 = Color3.fromRGB(255,36,0)
+Speedbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+-- Speedbutton click
+Speedbutton.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DND222dnD222/e/refs/heads/main/Walkspeed"))()
+end)
+
+-- Clipbutton
+local Clipbutton = Instance.new("TextButton")
+Clipbutton.Parent = frame
+Clipbutton.Size = UDim2.fromScale(0.2, 0.1)
+Clipbutton.Position = UDim2.fromScale(0.1, 0.25)
+Clipbutton.Text = "Noclip"
+Clipbutton.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
+Clipbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+-- Clipbutton Click
+Clipbutton.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DND222dnD222/e/refs/heads/main/nc"))()
+end)
+
+-- Teleportbutton
+local Teleportbutton = Instance.new("TextButton")
+Teleportbutton.Parent = frame
+Teleportbutton.Size = UDim2.fromScale(0.2, 0.1)
+Teleportbutton.Position = UDim2.fromScale(0.35, 0.25)
+Teleportbutton.Text = "Teleport-- T+click"
+Teleportbutton.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
+Teleportbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+-- Teleportbutton Click
+Teleportbutton.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DND222dnD222/e/refs/heads/main/tptouch"))()
+end)
+
+-- Flybutton
+local Flybutton = Instance.new("TextButton")
+Flybutton.Parent = frame
+Flybutton.Size = UDim2.fromScale(0.8, 0.1)
+Flybutton.Position = UDim2.fromScale(0.1, 0.4)
+Flybutton.Text = "Fly-- NOT MY SCRIPT PROCEED WITH CAUTION"
+Flybutton.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
+Flybutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+-- Flybutton Click
+Flybutton.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+end)
+
+-- Prison Life Gui
+local Plifebutton = Instance.new("TextButton")
+Plifebutton.Parent = frame
+Plifebutton.Size = UDim2.fromScale(0.8, 0.1)
+Plifebutton.Position = UDim2.fromScale(0.1, 0.55)
+Plifebutton.Text = "Prison Life Gui-- NOT MY SCRIPT PROCEED WITH CAUTION"
+Plifebutton.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
+Plifebutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+-- Plifebutton Click
+Plifebutton.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/MP5-Prison-Life-Lynix-74440"))()
+end)
+-- GVBWARS TWEEN FARM
+local GBTweenbutton = Instance.new("TextButton")
+GBTweenbutton.Parent = frame
+GBTweenbutton.Size = UDim2.fromScale(0.8, 0.1)
+GBTweenbutton.Position = UDim2.fromScale(0.1, 0.7)
+GBTweenbutton.Text = "GVB wars-- dont worry bout it"
+GBTweenbutton.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
+GBTweenbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+-- GBTweenbutton Click
+GBTweenbutton.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DND222dnD222/e/refs/heads/main/gvb"))()
+end)
+
+-- Coordinates
+local Cbutton = Instance.new("TextButton")
+Cbutton.Parent = frame
+Cbutton.Size = UDim2.fromScale(0.8, 0.1)
+Cbutton.Position = UDim2.fromScale(0.1, 0.85)
+Cbutton.Text = "Coordinates--return coords"
+Cbutton.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
+Cbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+-- Cbutton Click
+Cbutton.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DND222dnD222/e/refs/heads/main/coordreturn"))()
+end)
