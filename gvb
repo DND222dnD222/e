@@ -1,0 +1,41 @@
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+-- Define positions
+local pos1 = Vector3.new(-8, 403.2, 105)
+local pos2 = Vector3.new(17, 403.2, -78.5)
+
+-- Customizable tween speed (in seconds, lower = faster)
+local tweenTime = 0.7  -- Adjust this to change speed (e.g., 0.5 for faster, 2 for slower)
+
+-- Tween settings
+local tweenInfo = TweenInfo.new(
+    tweenTime, -- Duration
+    Enum.EasingStyle.Linear, -- Easing style (Linear for constant speed)
+    Enum.EasingDirection.InOut, -- Easing direction
+    0, -- Repeat count (0 = no repeat)
+    false, -- Reverses (false = one-way)
+    0 -- Delay
+)
+
+-- Function to create and play tween
+local function tweenToPosition(targetPos)
+    local tween = TweenService:Create(
+        hrp,
+        tweenInfo,
+        {CFrame = CFrame.new(targetPos)}
+    )
+    tween:Play()
+    tween.Completed:Wait() -- Wait for tween to finish
+end
+
+-- Main loop
+while true do
+    tweenToPosition(pos1)
+    wait() -- Small wait to prevent overlap
+    tweenToPosition(pos2)
+    wait()
+end
