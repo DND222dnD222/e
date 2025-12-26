@@ -25,7 +25,7 @@ UIS.InputBegan:Connect(function(input, gameProcessed)
 	if gameProcessed then return end
 
 	if input.UserInputType == Enum.UserInputType.MouseButton1
-		and UIS:IsKeyDown(Enum.KeyCode.X) then
+		and UIS:IsKeyDown(Enum.KeyCode.T) then
 		Teleport(Mouse.Hit.Position)
 	end
 end)
