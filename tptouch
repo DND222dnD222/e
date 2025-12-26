@@ -1,0 +1,31 @@
+local UIS = game:GetService("UserInputService")
+
+local Player = game.Players.LocalPlayer
+local Mouse = Player:GetMouse()
+
+function GetCharacter()
+	return Player.Character
+end
+
+function Teleport(pos)
+	local Char = GetCharacter()
+	if Char then
+		local Humanoid = Char:FindFirstChildOfClass("Humanoid")
+		local HRP = Char:FindFirstChild("HumanoidRootPart")
+
+		if Humanoid and HRP then
+			local hipOffset = Humanoid.HipHeight + (HRP.Size.Y / 2)
+			local newPos = Vector3.new(pos.X, pos.Y + hipOffset, pos.Z)
+			Char:MoveTo(newPos)
+		end
+	end
+end
+
+UIS.InputBegan:Connect(function(input, gameProcessed)
+	if gameProcessed then return end
+
+	if input.UserInputType == Enum.UserInputType.MouseButton1
+		and UIS:IsKeyDown(Enum.KeyCode.X) then
+		Teleport(Mouse.Hit.Position)
+	end
+end)
