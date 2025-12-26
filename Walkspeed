@@ -1,0 +1,36 @@
+local walkSpeed = 1
+local boostedJumpHeight = 50     -- jump height when Shift is held
+local normalJumpHeight = 7.2      -- default Roblox jump height
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local UserInputService = game:GetService("UserInputService")
+
+-- Always force JumpHeight mode
+humanoid.UseJumpPower = false
+
+
+local shiftHeld = false
+
+-- Detect when Shift is pressed
+UserInputService.InputBegan:Connect(function(input, gp)
+	if gp then return end
+	if input.KeyCode == Enum.KeyCode.Q then
+		shiftHeld = true
+		humanoid.JumpHeight = boostedJumpHeight
+		task.wait(0.05)
+		humanoid.WalkSpeed = walkSpeed
+	end
+end)
+
+-- Detect when Shift is released
+UserInputService.InputEnded:Connect(function(input, gp)
+	if gp then return end
+	if input.KeyCode == Enum.KeyCode.Q then
+		shiftHeld = false
+		humanoid.JumpHeight = normalJumpHeight
+		humanoid.WalkSpeed = 20
+	end
+end)
