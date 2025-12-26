@@ -1,0 +1,87 @@
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+
+local LocalPlayer = Players.LocalPlayer
+local espEnabled = false
+local espObjects = {} -- store ESP per player
+
+-- Create ESP for one character
+local function createESP(player, character)
+    if not character or not character:FindFirstChild("Head") then return end
+    if player == LocalPlayer then return end
+
+    -- Folder to store objects
+    local folder = Instance.new("Folder")
+    folder.Name = player.Name .. "_ESP"
+    folder.Parent = workspace
+
+    -- Highlight
+    local highlight = Instance.new("Highlight")
+    highlight.FillColor = Color3.fromRGB(255, 0, 0)
+    highlight.OutlineColor = Color3.fromRGB(0, 0, 255)
+    highlight.Adornee = character
+    highlight.Parent = folder
+
+    -- Billboard username
+    local head = character:WaitForChild("Head")
+    local bill = Instance.new("BillboardGui")
+    bill.Adornee = head
+    bill.Size = UDim2.new(0, 150, 0, 40)
+    bill.AlwaysOnTop = true
+    bill.Parent = folder
+
+    local text = Instance.new("TextLabel")
+    text.Size = UDim2.new(1, 0, 1, 0)
+    text.BackgroundTransparency = 1
+    text.TextScaled = true
+    text.Text = player.Name
+    text.TextColor3 = Color3.fromRGB(255, 255, 255)
+    text.Font = Enum.Font.SourceSansBold
+    text.Parent = bill
+
+    espObjects[player] = folder
+end
+
+-- Remove ESP
+local function removeESP(player)
+    if espObjects[player] and espObjects[player].Parent then
+        espObjects[player]:Destroy()
+    end
+    espObjects[player] = nil
+end
+
+-- Toggle all ESP
+local function toggleESP()
+    espEnabled = not espEnabled
+
+    if espEnabled then
+        -- Turn on ESP
+        for _, player in ipairs(Players:GetPlayers()) do
+            if player ~= LocalPlayer and player.Character then
+                createESP(player, player.Character)
+            end
+        end
+    else
+        -- Turn OFF: delete everything
+        for p, _ in pairs(espObjects) do
+            removeESP(p)
+        end
+    end
+end
+
+-- Respawn logic
+Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        if espEnabled then
+            createESP(player, character)
+        end
+    end)
+end)
+
+-- ❤️ KEYBIND — PRESS R TO TOGGLE ESP
+UserInputService.InputBegan:Connect(function(input, gp)
+    if gp then return end
+    if input.KeyCode == Enum.KeyCode.R then
+        toggleESP()
+    end
+end)
