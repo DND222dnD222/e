@@ -1,5 +1,5 @@
-local walkSpeed = 1
-local boostedJumpHeight = 50     -- jump height when Shift is held
+local walkSpeed = 100
+local boostedJumpHeight = 70     -- jump height when Shift is held
 local normalJumpHeight = 7.2      -- default Roblox jump height
 
 local player = game.Players.LocalPlayer
