@@ -131,8 +131,8 @@ end)
 local mbutton = Instance.new("TextButton")
 mbutton.Parent = frame
 mbutton.Size = UDim2.fromScale(0.8, 0.1)
-mbutton.Position = UDim2.fromScale(0.1, 1)
-mbutton.Text = "Coordinates--return coords"
+mbutton.Position = UDim2.fromScale(0.1, 0.9)
+mbutton.Text = "MM2 gui not my script"
 mbutton.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
 mbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
 -- mbutton Click
