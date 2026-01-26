@@ -100,7 +100,7 @@ Plifebutton.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
 Plifebutton.TextColor3 = Color3.fromRGB(0, 0, 0)
 -- Plifebutton Click
 Plifebutton.MouseButton1Click:Connect(function()
-loadstring(game:HttpGet("https://rawscripts.net/raw/Prison-Life-Gun-Grabber-Mods-Melee-Arrest-Auras-TPs-Anti-Arrest-Tase-69542"))()
+loadstring(game:HttpGet("https://kohlslite.pages.dev/PrisonX.lua"))()
 end)
 -- GVBWARS TWEEN FARM
 local GBTweenbutton = Instance.new("TextButton")
