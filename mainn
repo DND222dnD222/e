@@ -100,7 +100,7 @@ Plifebutton.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
 Plifebutton.TextColor3 = Color3.fromRGB(0, 0, 0)
 -- Plifebutton Click
 Plifebutton.MouseButton1Click:Connect(function()
-loadstring(game:HttpGet("https://kohlslite.pages.dev/PrisonX.lua"))()
+
 end)
 -- GVBWARS TWEEN FARM
 local GBTweenbutton = Instance.new("TextButton")
@@ -137,5 +137,5 @@ mbutton.BackgroundColor3 = Color3.fromRGB(255, 36, 0)
 mbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
 -- mbutton Click
 mbutton.MouseButton1Click:Connect(function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/vertex-peak/vertex/refs/heads/main/loadstring"))()
+
 end)
